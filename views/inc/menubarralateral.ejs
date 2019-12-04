@@ -1,0 +1,26 @@
+<div class="wrapper ">
+
+  <div class="sidebar" data-color="purple">
+    <!--
+             Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+     
+             Tip 2: you can also add an image using data-image tag
+         -->
+    <div class="logo">
+      <a class="simple-text logo-normal">
+        Menu
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <% menus.forEach(function(menu) { %>
+        <li <% if (menu.active) {%>class="nav-item active" <% } %>>
+          <a class="nav-link" href="<%= menu.href %>">
+            <i class="material-icons"><%= menu.icon %></i>
+            <p> <%= menu.text %> </p>
+          </a>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+  </div>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include("inc/head") -%>
+
+<body>
+
+  <%- include("inc/menubarralateral") -%>
+
+  <div class="main-panel">
+
+    <%- include("inc/navbar") -%>
+
+    <div class="content" id="form-create">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Cadastro</h4>
+              <p class="card-category">Preencha as Informações.</p>
+            </div>
+            <div class="card-body">
+              <form method="post" action="/funcformulario">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="nomecompleto">Nome Completo</label>
+                      <input type="text" class="form-control" id="nomecompleto" name="nomecompleto">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="cpf">CPF</label>
+                      <input type="text" minlength="14" maxlength="14" class="form-control"
+                        onkeypress="$(this).mask('000.000.000-00');" id="cpf" name="cpf">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="datanascimento">Data de Nascimento</label>
+                      <input type="date" id="inputDateCreate" name="datanascimento" class="form-control"
+                        id="datanascimento">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="localnascimento">Local de Nascimento</label>
+                      <input type="text" class="form-control" id="localnascimento" name="localnascimento">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="rg">Rg</label>
+                      <input type="text" class="form-control" id="rg" name="rg"
+                        onkeypress="$(this).mask('99.999.99-9')">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label for="dataexped">Data de Expedissão</label>
+                      <input type="date" class="form-control" id="dataexped" name="dataexped">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="orgexped">Orgão Expeditor</label>
+                      <input type="text" class="form-control" id="orgexped" name="orgexped">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="ctps">Ctps</label>
+                      <input type="text" class="form-control" id="ctps" name="ctps">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="numerofilho">Número de Filhos</label>
+                      <input type="text" class="form-control" id="numerofilho" name="numerofilho">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="endereco">Endereço</label>
+                      <input type="text" class="form-control" id="endereco" name="endereco">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="numero">Número</label>
+                      <input type="text" class="form-control" id="numero" name="numero">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="bairro">Bairro</label>
+                      <input type="text" class="form-control" id="bairro" name="bairro">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="telefone">Telefone</label>
+                      <input type="text" class="form-control" id="telefone" name="telefone"
+                        onkeypress="$(this).mask('(00) 0000-0000')">
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="celular">Celular</label>
+                      <input type="text" class="form-control" id="celular" name="celular"
+                        onkeypress="$(this).mask('(00) 0000-00009')">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="contatoemergencia">Contato de Emergencia</label>
+                      <input type="text" class="form-control" id="contatoemergencia" name="contatoemergencia"
+                        onkeypress="$(this).mask('(00) 0000-00009')">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="cargo">Cargo</label>
+                      <input type="text" class="form-control" id="cargo" name="cargo">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="dataentrada">Data de Entrada</label>
+                      <input type="date" class="form-control" id="dataentrada" name="dataentrada">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="datasaida">Data de Saída</label>
+                      <input type="date" class="form-control" id="datasaida" name="datasaida">
+                    </div>
+                  </div>
+
+
+                  <div class="form-group col-md-4">
+
+                    <label for="inputPhotoUpdate">Anexar Imagem </label>
+                    <button type="button" id="x" class="btn btn-fab btn-round btn-primary">
+                      <i class="material-icons">attach_file</i>
+                    </button>
+
+                    <input type="file" multiple class="form-control" id="inputPhotoUpdate" name="photo">
+                  </div>
+
+
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Observações</label>
+                      <div class="form-group">
+                        <textarea class="form-control" rows="5" id="informacoes"
+                          placeholder="Insira alguma Observação Aqui, se Julgar Necessario."
+                          name="informacoes"></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-round pull-right" name="salva">Salvar</button>
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <%- include("inc/footer") -%>
+
+
+  </div>
+
+  <%- include("inc/imports") -%>
+
+  <script>
+
+    new HcodeFileReader("#form-create form [type=file]", "#form-create img");
+
+    new HcodeGrid({
+      formUpdate: '#form-create form',
+      msg: 'Funcionário Cadastrado Com Sucesso',
+      tipo: 'alert alert-info'
+    });
+
+  </script>
+
+</body>
+
+</html>

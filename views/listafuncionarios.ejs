@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include("inc/head") -%>
+
+<body>
+
+  <%- include("inc/menubarralateral") -%>
+
+  <div class="main-panel">
+
+    <%- include("inc/navbar") -%>
+
+    <div class="content">
+
+
+      <div class="row">
+        <div class="col-lg-14 col-md-12">
+          <div class="card">
+            <div class="card-header card-header-tabs card-header-primary">
+              <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                  <span class="nav-tabs-title">Funcionários:</span>
+                  <ul class="nav nav-tabs" data-tabs="tabs">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#ativo" data-toggle="tab">
+                        <i class="material-icons">bug_report</i> Ativos
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#inativo" data-toggle="tab">
+                        <i class="material-icons">code</i> Inativos
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+
+              <form action="" class="navbar-form">
+                <div class="input-group no-border">
+
+                  <input type="text" name="pesquisa" class="form-control" value="" placeholder="Pesquisar...">
+
+                  <button type="submit" class="btn  btn-round btn-just-icon">
+                    <i class="material-icons">search</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+              </form>
+
+
+              <div class="tab-content">
+                <div class="tab-pane active" id="ativo">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>#</th>
+                        <th>Nome Completo</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% data.forEach(function(row){ %>
+                      <tr data-row="<%= JSON.stringify(row) %>">
+                        <td id="jj"><%= row.id %></td>
+                        <td id="jj"><%= row.nomecompleto %></td>
+                        <td class="td-actions text-right">
+                          <button type="button" id="btn-delete" name="btn-delete" rel="tooltip" title="Excluir"
+                            class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#exampleModal">
+                            <i class="material-icons btn-delete ">close</i>
+                          </button>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="tab-pane" id="inativo">
+                  <table class="table">
+
+                    <thead class=" text-primary">
+                      <tr>
+                        <th>#</th>
+                        <th>Nome Completo</th>
+                        <th> </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% inativo.forEach(function(row){ %>
+                      <tr data-row="<%= JSON.stringify(row) %>">
+                        <td id="jj"><%= row.id %></td>
+                        <td id="jj"><%= row.nomecompleto %></td>
+                        <td class="td-actions text-right">
+                          <button type="button" id="btn-delete" name="btn-delete" rel="tooltip" title="Excluir"
+                            class="btn btn-danger btn-link btn-sm" data-toggle="modal" data-target="#exampleModal">
+                            <i class="material-icons btn-delete ">close</i>
+                          </button>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+
+                  </table>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="box-footer clearfix ">
+        <nav>
+          <ul class="pagination pull-right">
+            <% links.forEach(link=>{ %>
+            <li class="page-link">
+              <a href="<%= link.href %>">
+                <span>
+                  <%= link.text %>
+                  <span class="sr-only">(current)</span>
+                </span>
+              </a>
+            </li>
+            <%  }); %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+
+  <%- include("inc/footer") -%>
+
+
+  <div class="modal fade bd-example-modal-lg " id="modal-update">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Edição</h4>
+            <p class="card-category">Alterar Dados do Funcionário.</p>
+          </div>
+          <div class="card-body">
+            <form method="post" action="/funcionarios">
+              <input type="hidden" name="id">
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="nomecompleto">Nome Completo</label>
+                    <input type="text" class="form-control" autofocus id="nomecompleto" name="nomecompleto">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="cpf">CPF</label>
+                    <input type="text" minlength="14" autofocus maxlength="14" class="form-control"
+                      onkeypress="$(this).mask('000.000.000-00');" id="cpf" name="cpf">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="datanascimento">Data de Nascimento</label>
+                    <input type="date" id="inputDateCreate" name="datanascimento" class="form-control"
+                      id="datanascimento">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="localnascimento">Local de Nascimento</label>
+                    <input type="text" class="form-control" id="localnascimento" name="localnascimento">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="rg">Rg</label>
+                    <input type="text" class="form-control" id="rg" name="rg" onkeypress="$(this).mask('99.9999.9-9')">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label for="dataexped">Data de Expedissão</label>
+                    <input type="date" class="form-control" id="dataexped" name="dataexped">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="orgexped">Orgão Expeditor</label>
+                    <input type="text" class="form-control" id="orgexped" name="orgexped">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="ctps">Ctps</label>
+                    <input type="text" class="form-control" id="ctps" name="ctps">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="numerofilho">Número de Filhos</label>
+                    <input type="text" class="form-control" id="numerofilho" name="numerofilho">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="endereco">Endereço</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="numero">Número</label>
+                    <input type="text" class="form-control" id="numero" name="numero">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="bairro">Bairro</label>
+                    <input type="text" class="form-control" id="bairro" name="bairro">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="telefone">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" name="telefone"
+                      onkeypress="$(this).mask('(00) 0000-0000')">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="celular">Celular</label>
+                    <input type="text" class="form-control" id="celular" name="celular"
+                      onkeypress="$(this).mask('(00) 0000-00009')">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="contatoemergencia">Contato de Emergencia</label>
+                    <input type="text" class="form-control" id="contatoemergencia" name="contatoemergencia"
+                      onkeypress="$(this).mask('(00) 0000-00009')">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="bmd-label-floating" for="cargo">Cargo</label>
+                    <input type="text" class="form-control" id="cargo" name="cargo">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="dataentrada">Data de Entrada</label>
+                    <input type="date" class="form-control" id="dataentrada" name="dataentrada">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="datasaida">Data de Saída</label>
+                    <input type="date" class="form-control" id="datasaida" name="datasaida">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+                <input type="file" multiple class="form-control" id="inputPhotoUpdate" name="photo">
+                <div class="col-md-4">
+
+                  <a id="caralho" href="" class="fh5co-card-item image-popup">
+                    <figure>
+
+                      <img id="img" style="max-width: 228px; max-height: 228px; display: block;" alt="Imagem"
+                        class="img-responsive   fh5co-card-item image-popup">
+                    </figure>
+                  </a>
+
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Observações</label>
+                    <div class="form-group">
+                      <label class="bmd-label-floating" for="informacoes"></label>
+                      <textarea class="form-control" rows="5" id="informacoes" name="informacoes"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" name="salva" class="btn btn-primary btn-round pull-right">Salvar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%- include("inc/imports") -%>
+
+
+
+</body>
+
+</html>
+
+<script>
+
+  new HcodeFileReader("#modal-update form [type=file]", "#modal-update img");
+
+  new HcodeGrid({
+    urlMsg: 'Deseja Realmente Excluir o Funcionario ${data.nomecompleto} ?',
+    urlDelete: '/funcionarios/${data.id}',
+  });
+
+
+  [...document.querySelectorAll("#img")].forEach(btn => {
+    btn.addEventListener('click', e => {
+
+      teste = document.querySelector("#caralho")
+      if (teste) {
+        teste.href = btn.src
+      }
+
+      //   console.log(btn)
+
+
+      $('#modal-update').modal('hide');
+    }
+    )
+  }
+  );
+
+
+
+</script>

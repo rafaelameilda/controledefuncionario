@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include("inc/head") -%>
+
+<body>
+
+  <%- include("inc/menubarralateral") -%>
+
+  <div class="main-panel">
+
+    <%- include("inc/navbar") -%>
+
+    <div class="content">
+      <nav aria-label="breadcrumb" role="navigation">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/ferias">Férias</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Lançadas</li>
+        </ol>
+      </nav>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-info">
+              <h4 class="card-title ">Histórico de Férias Lançadas</h4>
+              <p class="card-category">Registro das férias lançadas anteriormente.</p>
+            </div>
+            <div class="card-body">
+
+              <form action="" class="navbar-form">
+                <div class="input-group no-border">
+                  
+                    <input type="text" name="pesquisa" class="form-control"
+                     value="" placeholder="Pesquisar...">
+                 
+                  <button type="submit" class="btn   btn-round btn-just-icon">
+                    <i class="material-icons">search</i>
+                    <div class="ripple-container"></div>
+                  </button>
+                </div>
+              </form>
+
+
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th>#</th>
+                      <th>Nome Completo</th>
+                      <th>Cargo </th>
+                      <th>Data de Saída </th>
+                      <th>Data de Retorno </th>
+                      <th> Dias totais</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% data.forEach(function(row){ %>
+                    <tr data-row="<%= JSON.stringify(row) %>">
+                      <td><%= row.id %></td>
+                      <td id="jj"><%= row.nome %></td>
+                      <td><%= row.cargo %></td>
+                      <td><%= moment(row.saida).format("DD [de] MMMM [de] YYYY") %></td>
+                      <td><%= moment(row.volta).format("DD [de] MMMM [de] YYYY") %></td>
+                      <td><%= row.dias %></td>
+                      <td></td>
+                    </tr>
+                    <% }); %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer clearfix ">
+                <nav>
+                  <ul class="pagination pull-right">
+                    <% links.forEach(link=>{ %>
+                    <li class="page-link">
+                      <a href="<%= link.href %>">
+                        <span>
+                          <%= link.text %>
+                          <span class="sr-only">(current)</span>
+                        </span>
+                      </a>
+                    </li>
+                    <%  }); %>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <%- include("inc/footer") -%>
+
+  </div>
+
+
+  <%- include("inc/imports") -%>
+
+</body>
+
+</html>  

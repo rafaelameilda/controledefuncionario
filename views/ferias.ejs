@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include("inc/head") -%>
+
+<body>
+
+  <%- include("inc/menubarralateral") -%>
+
+  <div class="main-panel">
+
+    <%- include("inc/navbar") -%>
+
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+
+          <a href="/lancarferias">
+            <div class="col-md-6">
+              <div class="card ">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Lançar Férias</h4>
+                </div>
+                <div class="card-body">
+                  <p class="card-description">
+                    Página para lançar férias...
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-danger">warning</i>
+                    LANÇAR...
+                  </div>
+                </div>
+              </div>
+          </a>
+        </div>
+
+        
+        <a href="/listaferias">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header card-header-info">
+                <h4 class="card-title">Férias Lançadas</h4>
+              </div>
+              <div class="card-body">
+                <p class="card-description">
+                  Página para consultar histórico de férias lançadas...
+                </p>
+              </div>
+              <div class="card-footer">
+                <div class="stats">
+                  <i class="material-icons text-danger">warning</i>
+                  CONSULTAR...
+                </div>
+              </div>
+            </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <%- include("inc/footer") -%>
+
+  </div>
+
+  <%- include("inc/imports") -%>
+
+</body>
+
+</html>

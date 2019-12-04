@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include("inc/head") -%>
+
+<body>
+
+    <%- include("inc/menubarralateral") -%>
+
+    <div class="main-panel">
+
+        <%- include("inc/navbar") -%>
+
+        <div class="content">
+
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/ferias">Férias</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Lançar</li>
+                </ol>
+            </nav>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title ">Funcionários a Lançar Férias</h4>
+                            <p class="card-category">Lançar férias para os funcionários cadastrados.</p>
+                        </div>
+                        <div class="card-body">
+
+                            <form action="" class="navbar-form">
+                                <div class="input-group no-border">
+
+                                    <input type="text" name="pesquisa" class="form-control" value=""
+                                        placeholder="Pesquisar...">
+
+                                    <button type="submit" class="btn  btn-round btn-just-icon">
+                                        <i class="material-icons">search</i>
+                                        <div class="ripple-container"></div>
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class=" text-primary">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Funcionários</th>
+                                            <th>A Vencer </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% data.forEach(function(row){ %>
+                                        <tr data-row="<%= JSON.stringify(row) %>">
+                                            <td id="jj"><%= row.idfuncionario %></td>
+                                            <td id="jj"><%= row.nomecompleto %></td>
+                                            <td id="jj" class="">
+
+                                                <%= row.avencer %></td>
+
+                                        </tr>
+                                        <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="box-footer clearfix ">
+                                <nav>
+                                    <ul class="pagination pull-right">
+                                        <% links.forEach(link=>{ %>
+                                        <li class="page-link">
+                                            <a href="<%= link.href %>">
+                                                <span>
+                                                    <%= link.text %>
+                                                    <span class="sr-only">(current)</span>
+                                                </span>
+                                            </a>
+                                        </li>
+                                        <%  }); %>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <%- include("inc/footer") -%>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg " id="modal-update">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content ">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Lançar Férias</h4>
+                        <p class="card-category">Lançar dados das férias do funcionário.</p>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/lancarferias">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating" for="idfuncionario">Código</label>
+                                        <input type="text" class="form-control" id="idfuncionario" name="idfuncionario"
+                                            readonly>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <fieldset disabled>
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating" for="nomecompleto">Nome
+                                                Completo</label>
+                                            <input type="text" class="form-control" id="nomecompleto"
+                                                name="nomecompleto">
+                                        </div>
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="datasaida">Data de Saída</label>
+                                        <input type="date" id="inputDateCreate" autofocus name="datasaida" required
+                                            class="form-control" id="datasaida">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="dataretorno">Data de Retorno</label>
+                                        <input type="date" id="dataretorno" autofocus name="dataretorno" required
+                                            class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" name="salva" class="btn btn-warning btn-round pull-right"
+                                name="salva">Salvar</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include("inc/imports") -%>
+
+
+    <script>
+
+        new HcodeGrid({
+            msg: 'Férias Lançadas Com Sucesso',
+            tipo: 'rose'
+        });
+
+
+    </script>
+</body>
+
+</html>
