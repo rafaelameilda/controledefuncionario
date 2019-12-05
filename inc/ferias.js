@@ -94,7 +94,7 @@ module.exports = {
                  ELSE 'Não' END AS avencer 
                  FROM funcionarios
             where  length(ifnull(datasaida,0)) < 2  
-            and   TIMESTAMPDIFF(MONTH, dataentrada + INTERVAL TIMESTAMPDIFF(YEAR,  dataentrada, current_date) YEAR , current_date) > 0
+            and   TIMESTAMPDIFF(MONTH, dataentrada + INTERVAL TIMESTAMPDIFF(YEAR,  dataentrada, current_date) YEAR , current_date) >= 0
                 ${(pesquisa) ? `and nomecompleto LIKE replace("%?%","'",'')  ` : ''} 
 
                 order by avencer desc
