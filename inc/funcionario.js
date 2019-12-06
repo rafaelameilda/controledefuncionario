@@ -48,7 +48,7 @@ module.exports = {
 
             }
 
-           
+
 
             if (parseInt(fields.id) > 0) {
 
@@ -109,7 +109,7 @@ module.exports = {
                 VALUES
                 (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)` ;
             }
-            
+
             conn.query(query, params, (err, results) => {
                 if (err) {
                     reject(err);
@@ -212,7 +212,13 @@ module.exports = {
                         resolve(results);
 
                         if (results[0].photo != `arquivos/imgpadrao.jpg`) {
-                            fs.unlinkSync(`./public/${results[0].photo}`);
+
+                            caminho = `./public/${results[0].photo}`
+
+                            if (caminho) {
+                                fs.unlinkSync(caminho);
+                            }
+
                         }
 
                     }
