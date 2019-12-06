@@ -211,7 +211,7 @@ module.exports = {
                     } else {
                         resolve(results);
 
-                        if (results[0].photo != `arquivos/imgpadrao.jpg`) {
+                        if (results[0].photo != `arquivos/imgpadrao.jpg`  & results[0].photo != null ) {
 
                             caminho = `./public/${results[0].photo}`
 
