@@ -93,7 +93,10 @@ class HcodeGrid {
         for (let name in data) {
           switch (name) {
             case 'photo':
-              this.formUpdate.querySelector("img").src = `/`+data[name];
+            let  teste = this.formUpdate.querySelector("img")
+              if(teste) {
+                teste.src  = `/`+data[name];
+              } 
         
               break;
             default:
@@ -118,7 +121,7 @@ class HcodeGrid {
 
     }, {
         type: tipo,
-        timer: 5000,
+        timer: 3000,
         placement: {
           from: from,
           align: align

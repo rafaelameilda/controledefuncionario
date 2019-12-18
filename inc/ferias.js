@@ -93,7 +93,7 @@ module.exports = {
                  YEAR , current_date) >= 11 then 'Sim'
                  ELSE 'Não' END AS avencer 
                  FROM funcionarios
-            where  length(ifnull(datasaida,0)) < 2  
+            where  length(ifnull(datasaida,0)) < 1 or datasaida = '0001-01-01'
             and   TIMESTAMPDIFF(MONTH, dataentrada + INTERVAL TIMESTAMPDIFF(YEAR,  dataentrada, current_date) YEAR , current_date) >= 0
                 ${(pesquisa) ? `and nomecompleto LIKE replace("%?%","'",'')  ` : ''} 
 

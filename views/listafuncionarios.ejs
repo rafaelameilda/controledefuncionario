@@ -161,7 +161,7 @@
                 <div class="col-md-2">
                   <div class="form-group">
                     <label class="bmd-label-floating" for="cpf">CPF</label>
-                    <input type="text" minlength="14" autofocus maxlength="14" class="form-control"
+                    <input type="text" minlength="14" maxlength="14" class="form-control"
                       onkeypress="$(this).mask('000.000.000-00');" id="cpf" name="cpf">
                   </div>
                 </div>
@@ -274,24 +274,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-
-                <input type="file" multiple class="form-control" id="inputPhotoUpdate" name="photo">
-                <div class="col-md-4">
-
-                  <a id="caralho" href="" class="fh5co-card-item image-popup">
-                    <figure>
-
-                      <img id="img" style="max-width: 228px; max-height: 228px; display: block;" alt="Imagem"
-                        class="img-responsive   fh5co-card-item image-popup">
-                    </figure>
-                  </a>
-
-                </div>
-
-              </div>
-
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
@@ -325,7 +307,7 @@
 
 <script>
 
-  new HcodeFileReader("#modal-update form [type=file]", "#modal-update img");
+  // new HcodeFileReader("#modal-update form [type=file]", "#modal-update img");
 
   new HcodeGrid({
     urlMsg: 'Deseja Realmente Excluir o Funcionario ${data.nomecompleto} ?',
@@ -350,6 +332,25 @@
   }
   );
 
+
+  /*
+     <div class="row">
+
+                <input type="file" multiple class="form-control" id="inputPhotoUpdate" name="photo">
+                <div class="col-md-4">
+
+                  <a id="caralho" href="" class="fh5co-card-item image-popup">
+                    <figure>
+
+                      <img id="img" style="max-width: 228px; max-height: 228px; display: block;" alt="Imagem"
+                        class="img-responsive   fh5co-card-item image-popup">
+                    </figure>
+                  </a>
+
+                </div>
+
+              </div>
+  */
 
 
 </script>

@@ -11,7 +11,7 @@ moment.locale("pt-br");
 
 
 router.use(function (req, res, next) {
-  req.menus = admin.getMenus(req);
+  req.menus = admin.getMenuss(req);
   next();
 })
 
@@ -84,10 +84,11 @@ router.get('/funcformulario', function (req, res, next) {
 
 router.post('/funcformulario', function (req, res, next) {
 
-  funcionario.save(req.fields, req.files).then(results => {
+  funcionario.save(req.fields).then(results => {
     res.send(results);
   }).catch(err => {
     res.send(err);
+    console.log(err)
   });
 });
 

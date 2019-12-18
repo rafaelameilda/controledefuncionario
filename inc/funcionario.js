@@ -11,11 +11,11 @@ module.exports = {
         return new Promise((resolve, reject) => {
 
 
-            if (files.photo.name) {
+           /* if (files.photo) {
                 fields.photo = `arquivos/${path.parse(files.photo.path).base}`;
             } else {
                 fields.photo = `arquivos/imgpadrao.jpg`;
-            }
+            }*/
 
             let query, queryPhoto = ``, params = [
                 fields.nomecompleto,
@@ -40,13 +40,13 @@ module.exports = {
 
             ];
 
-            if (files.photo.name) {
+          /*  if (files.photo.name) {
 
                 queryPhoto = `,photo = ?`;
 
                 params.push(fields.photo);
 
-            }
+            }*/
 
 
 
@@ -75,13 +75,13 @@ module.exports = {
             datasaida = ?,
             cargo = ?,
             orgexped = ?
-            ${queryPhoto} 
+          --  
             WHERE id = ?
           `;
 
             } else {
 
-                params.push(fields.photo);
+             //   params.push(fields.photo);
 
                 query = `
                 INSERT INTO funcionarios
@@ -103,16 +103,18 @@ module.exports = {
                 dataentrada,
                 datasaida,
                 cargo,
-                orgexped,
-                photo)
+                orgexped
+               
+                )
 
                 VALUES
-                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)` ;
+                (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)` ;
             }
 
             conn.query(query, params, (err, results) => {
                 if (err) {
                     reject(err);
+                    console.log('erro -> '+err)
 
                 } else {
                     resolve(results);
@@ -141,7 +143,8 @@ module.exports = {
                 `SELECT 
                 SQL_CALC_FOUND_ROWS * 
                 FROM funcionarios 
-                where length(ifnull(datasaida,0)) < 2
+                where length(ifnull(datasaida,0)) < 1
+                or datasaida = '0001-01-01'
                 ${(pesquisa) ? `and nomecompleto LIKE replace("%?%","'",'')  ` : ''} 
                 ORDER BY id 
                  LIMIT ?,? `,
@@ -178,8 +181,9 @@ module.exports = {
                 `SELECT 
                 SQL_CALC_FOUND_ROWS * 
                 FROM funcionarios 
-                where  length(ifnull(datasaida,0)) > 2
+                where  length(ifnull(datasaida,0)) > 1
                 ${(pesquisa) ? `and nomecompleto LIKE replace("%?%","'",'')  ` : ''} 
+                and datasaida <> '0001-01-01'
                 ORDER BY id 
                  LIMIT ?,? `,
                 params

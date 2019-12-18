@@ -10,7 +10,7 @@ module.exports = {
             (select count(*) from ferias where dataretorno >= curdate()) as feriasaberta,
             (select count(*) from ferias where dataretorno <=  curdate()) as feriasfechadas,
             (select count(*) from funcionarios ) as totalfuncionarios,
-            (SELECT count(*) from funcionarios where 1=1  and ifnull(datasaida,0) <= 0 
+            (SELECT count(*) from funcionarios where 1=1  and  length(ifnull(datasaida,0)) < 1 or datasaida = '0001-01-01'
              and  TIMESTAMPDIFF(MONTH, dataentrada + INTERVAL TIMESTAMPDIFF(YEAR,  dataentrada, current_date)
               YEAR , current_date) >= 11 ) as feriasavencer`
                 , (err, results) => {
@@ -24,7 +24,7 @@ module.exports = {
 
     },
 
-    getMenus(req) {
+    getMenuss(req) {
 
         let menus = [
             {

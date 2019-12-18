@@ -8,4 +8,13 @@ const connection = mysql.createConnection({
     multipleStatements: true
   });
 
+/*
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'user',
+  database: 'controlefuncionario',
+  password: '#Operadoryale10',
+  multipleStatements: true
+});*/
+
 module.exports = connection;
