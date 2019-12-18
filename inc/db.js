@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+const mysql = require('mysql');
 
 const connection = mysql.createConnection({
     host: 'us-cdbr-iron-east-05.cleardb.net',

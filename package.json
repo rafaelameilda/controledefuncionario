@@ -13,11 +13,9 @@
     "file-system": "^2.2.2",
     "formidable": "^1.2.1",
     "http-errors": "~1.6.3",
-    "knex": "^0.20.1",
     "moment": "^2.24.0",
     "morgan": "~1.9.1",
-    "mysql2": "^1.7.0",
-    "nodemon": "^2.0.2",
-    "sqlite3": "^4.1.0"
+    "mysql": "^2.17.1",
+    "nodemon": "^2.0.2"
   }
 }
